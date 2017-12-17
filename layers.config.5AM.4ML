@@ -1,0 +1,840 @@
+newlayer
+ gdsno 0
+ hidden no
+ name ns
+ red 0.2
+ green 0.2
+ blue 0.2
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth -0.0200000
+endlayer
+
+newlayer
+ gdsno 1
+ hidden no
+ name dt
+ red 0.2
+ green 0.2
+ blue 0.4
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth -0.0300000
+endlayer
+
+newlayer
+ gdsno 2
+ hidden yes
+ name ri
+ red 0.2
+ green 0.2
+ blue 0.6
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 0.200000
+endlayer
+
+newlayer
+ gdsno 3
+ hidden no
+ name rx
+ red 0.2
+ green 0.2
+ blue 0.8
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 0.000000
+endlayer
+
+newlayer
+ gdsno 4
+ hidden yes
+ name nw
+ red 0.2
+ green 0.4
+ blue 0.2
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 0.400000
+endlayer
+
+newlayer
+ gdsno 5
+ hidden yes
+ name bf
+ red 0.2
+ green 0.4
+ blue 0.4
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 0.500000
+endlayer
+
+newlayer
+ gdsno 6
+ hidden yes
+ name br
+ red 0.2
+ green 0.4
+ blue 0.6
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 0.600000
+endlayer
+
+newlayer
+ gdsno 7
+ hidden no
+ name pc
+ red 0.2
+ green 0.4
+ blue 0.8
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.225000
+ depth 0.225000
+endlayer
+
+newlayer
+ gdsno 9
+ hidden no
+ name rs
+ red 0.2
+ green 0.6
+ blue 0.4
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth -0.025000000
+endlayer
+
+newlayer
+ gdsno 10
+ hidden no
+ name bb
+ red 0.2
+ green 0.6
+ blue 0.6
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth -0.05000000
+endlayer
+
+newlayer
+ gdsno 11
+ hidden yes
+ name bh
+ red 0.2
+ green 0.6
+ blue 0.8
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 1.100000
+endlayer
+
+newlayer
+ gdsno 12
+ hidden yes
+ name ph
+ red 0.2
+ green 0.8
+ blue 0.2
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 1.200000
+endlayer
+
+newlayer
+ gdsno 13
+ hidden yes
+ name bp
+ red 0.2
+ green 0.8
+ blue 0.4
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 1.300000
+endlayer
+
+newlayer
+ gdsno 14
+ hidden yes
+ name bn
+ red 0.2
+ green 0.8
+ blue 0.6
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 1.400000
+endlayer
+
+newlayer
+ gdsno 15
+ hidden no
+ name rp
+ red 0.2
+ green 0.8
+ blue 0.8
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth -0.02800000
+endlayer
+
+newlayer
+ gdsno 16
+ hidden no
+ name mc
+ red 0.4
+ green 0.2
+ blue 0.2
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 1.150000
+ depth 1.150000
+endlayer
+
+newlayer
+ gdsno 17
+ hidden yes
+ name ce
+ red 0.4
+ green 0.2
+ blue 0.4
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 1.700000
+endlayer
+
+newlayer
+ gdsno 18
+ hidden no
+ name ca
+ red 0.4
+ green 0.2
+ blue 0.6
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.750000
+ depth 1.900000
+endlayer
+
+newlayer
+ gdsno 19
+ hidden no
+ name m1
+ red 0.4
+ green 0.2
+ blue 0.8
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.630000
+ depth 2.530000
+endlayer
+
+newlayer
+ gdsno 20
+ hidden no
+ name rn
+ red 0.4
+ green 0.4
+ blue 0.2
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth -0.01000000
+endlayer
+
+newlayer
+ gdsno 21
+ hidden no
+ name v1
+ red 0.4
+ green 0.4
+ blue 0.4
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 1.200000
+ depth 3.730000
+endlayer
+
+newlayer
+ gdsno 22
+ hidden no
+ name m2
+ red 0.4
+ green 0.4
+ blue 0.6
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.850000
+ depth 4.580000
+endlayer
+
+newlayer
+ gdsno 23
+ hidden yes
+ name bv
+ red 0.4
+ green 0.4
+ blue 0.8
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 2.300000
+endlayer
+
+newlayer
+ gdsno 24
+ hidden no
+ name v2
+ red 0.4
+ green 0.6
+ blue 0.2
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 1.200000
+ depth 5.780000
+endlayer
+
+newlayer
+ gdsno 25
+ hidden yes
+ name m3
+ red 0.4
+ green 0.6
+ blue 0.4
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 2.500000
+endlayer
+
+newlayer
+ gdsno 26
+ hidden yes
+ name tv
+ red 0.4
+ green 0.6
+ blue 0.6
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 2.600000
+endlayer
+
+newlayer
+ gdsno 27
+ hidden yes
+ name v3
+ red 0.4
+ green 0.6
+ blue 0.8
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 2.700000
+endlayer
+
+newlayer
+ gdsno 28
+ hidden yes
+ name m4
+ red 0.4
+ green 0.8
+ blue 0.2
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 2.800000
+endlayer
+
+newlayer
+ gdsno 29
+ hidden yes
+ name pv
+ red 0.4
+ green 0.8
+ blue 0.4
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 2.900000
+endlayer
+
+newlayer
+ gdsno 30
+ hidden yes
+ name v4
+ red 0.4
+ green 0.8
+ blue 0.6
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 3.000000
+endlayer
+
+newlayer
+ gdsno 31
+ hidden yes
+ name ab
+ red 0.4
+ green 0.8
+ blue 0.8
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 3.100000
+endlayer
+
+newlayer
+ gdsno 32
+ hidden yes
+ name tm
+ red 0.6
+ green 0.2
+ blue 0.2
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 3.200000
+endlayer
+
+newlayer
+ gdsno 33
+ hidden no
+ name mt
+ red 0.6
+ green 0.2
+ blue 0.4
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.830000
+ depth 6.610000
+endlayer
+
+newlayer
+ gdsno 51
+ hidden no
+ name av
+ red 0.8
+ green 0.2
+ blue 0.8
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 3.000000
+ depth 9.610000
+endlayer
+
+newlayer
+ gdsno 52
+ hidden no
+ name am
+ red 0.8
+ green 0.4
+ blue 0.2
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 4.000000
+ depth 13.610000
+endlayer
+
+newlayer
+ gdsno 34
+ hidden yes
+ name nu
+ red 0.6
+ green 0.2
+ blue 0.6
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 3.400000
+endlayer
+
+newlayer
+ gdsno 35
+ hidden yes
+ name dc
+ red 0.6
+ green 0.2
+ blue 0.8
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 3.500000
+endlayer
+
+newlayer
+ gdsno 36
+ hidden no
+ name xn
+ red 0.6
+ green 0.4
+ blue 0.2
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth -0.0400000
+endlayer
+
+newlayer
+ gdsno 37
+ hidden no
+ name bw
+ red 0.6
+ green 0.4
+ blue 0.4
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 1.150000
+ depth 1.150000
+endlayer
+
+newlayer
+ gdsno 38
+ hidden yes
+ name ne
+ red 0.6
+ green 0.4
+ blue 0.6
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 3.800000
+endlayer
+
+newlayer
+ gdsno 39
+ hidden yes
+ name n2
+ red 0.6
+ green 0.4
+ blue 0.8
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 3.900000
+endlayer
+
+newlayer
+ gdsno 40
+ hidden yes
+ name np
+ red 0.6
+ green 0.6
+ blue 0.2
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 4.000000
+endlayer
+
+newlayer
+ gdsno 41
+ hidden no
+ name lv
+ red 0.6
+ green 0.6
+ blue 0.4
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 30.41000
+ depth 22.01000
+endlayer
+
+newlayer
+ gdsno 42
+ hidden yes
+ name q2
+ red 0.6
+ green 0.6
+ blue 0.6
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 4.200000
+endlayer
+
+newlayer
+ gdsno 43
+ hidden yes
+ name q3
+ red 0.6
+ green 0.6
+ blue 0.8
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 4.300000
+endlayer
+
+newlayer
+ gdsno 44
+ hidden yes
+ name q4
+ red 0.6
+ green 0.8
+ blue 0.2
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 4.400000
+endlayer
+
+newlayer
+ gdsno 45
+ hidden yes
+ name fv
+ red 0.6
+ green 0.8
+ blue 0.4
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 4.500000
+endlayer
+
+newlayer
+ gdsno 46
+ hidden yes
+ name fr
+ red 0.6
+ green 0.8
+ blue 0.6
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 4.600000
+endlayer
+
+newlayer
+ gdsno 47
+ hidden yes
+ name ind
+ red 0.6
+ green 0.8
+ blue 0.8
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 4.700000
+endlayer
+
+newlayer
+ gdsno 48
+ hidden yes
+ name wvr125
+ red 0.8
+ green 0.2
+ blue 0.2
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 4.800000
+endlayer
+
+newlayer
+ gdsno 58
+ hidden yes
+ name prBoundary
+ red 0.8
+ green 0.6
+ blue 0.6
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 5.800000
+endlayer
+
+newlayer
+ gdsno 60
+ hidden yes
+ name padfiltr
+ red 0.8
+ green 0.8
+ blue 0.2
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 6.000000
+endlayer
+
+newlayer
+ gdsno 61
+ hidden no
+ name outlin
+ red 0.8
+ green 0.8
+ blue 0.4
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth -0.0700000
+endlayer
+
+newlayer
+ gdsno 62
+ hidden yes
+ name bperi
+ red 0.8
+ green 0.8
+ blue 0.6
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 6.200000
+endlayer
+
+newlayer
+ gdsno 50
+ hidden yes
+ name multi
+ red 0.8
+ green 0.2
+ blue 0.6
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth 5.000000
+endlayer
+
+newlayer
+ gdsno 63
+ hidden no
+ name text
+ red 0.8
+ green 0.8
+ blue 0.8
+ fill no
+ hatch cross
+ angle 45.0
+ step 3.0
+ thickness 0.100000
+ depth -0.0600000
+endlayer
+

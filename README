@@ -1,0 +1,53 @@
+
+GDSreader - simple Calma (GDSii) parser/printer tool.
+
+This software has as target the printing/plotting/displaying of Calma (GDSii)
+files without using true layout editors. I had once to visualize an unknown
+Calma file and customizing LEdit or Magic (the two layout editors I had access
+to) was so difficult that I decided to write this program.
+
+License
+gdsreader is placed under the GNU Public License (GPL) version 2.0. See the
+COPYING file for more information.
+
+Current status:
+- gdsreader is in an alpha stage and you should not expect too much from it;
+- the Calma files are almost completely parsed (had no layout example that makes
+  use of BOX/NODE elements);
+- given a Calma structure name, a PostScript file and a HPGL/2 file are
+  generated. The way each layer is handled is controlled by an ASCII
+  configuration file. The properties that can be set are color, fill (only
+  solid is supported), hatch (simple or cross, the angle and spacing are user
+  customizable too).
+
+Installation
+Take a look at the Makefile and change it accordingly to your setup. Type make.
+In order to produce an useful PostScript output, you need to write a
+configuration file (default is .layers.config). The one you'll find with the
+distribution is suitable for the Calma example test.gds (an actual Bandgap
+reference).
+
+What needs to be done:
+- to try a different way to do hatching in PostScript (e.g. by using custom
+  patterns);
+- to do shape merging for a better output;
+- to rewrite parts of the current C code in order to make it more efficient
+  (there are lots of repeating loops for seeking same things, linear search
+  might be replaced by more clever ways). Up to now, the code was written only
+  to work, the efficiency was not a major concern;
+- an unified rc file, for setting all aspects of the printing/plotting (page
+  size etc.);
+- documentation etc.
+Any other ideas are welcome.
+
+For suggestions, comments or bug reports, please drop an email to:
+serbanp@ix.netcom.com
+
+Thanks
+Have to thank to Steve Tell (tell@cs.unc.edu) for its stream_utils-0.10 package,
+useful as an example of how to deal with the Calma binary file, and to various
+people who have been so kind to reply my posts in the comp.cad.lsi and
+comp.lang.postscript newsgroups.
+
+
+Good luck!

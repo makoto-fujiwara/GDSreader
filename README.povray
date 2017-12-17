@@ -1,0 +1,137 @@
+New feature for gdsreader-0.3.2 
+
+  Generation of POVRAY scene files.
+
+Quick Overview:
+
+GDS2, (or "Calma"), files contain 2D shape data, and each shape has
+a specific layer number, (gdsno), and a datatype number.  To  make
+any sort of 3D model, these two integer numbers must be  "mapped"
+to a corresponding thickness and depth parameter, and  also to a
+color specification.   This  is handled by the user-created
+"layers.config" file.  A  layers.config file needs to be made for
+each technology you wish to convert.  A process which differs only
+in the number of metal layers used is considered a different
+technology.  The layers.config file is also used in the generation
+of postscript and HPGL output, so several of the parameters in 
+a layers.config file do not necessarily apply to POVRAY output.
+
+The layers.config file you make must have entries of the form:
+
+newlayer
+ gdsno 19
+ hidden no
+ name m1
+ red 0.4
+ green 0.2
+ blue 0.8
+ ...
+ thickness 0.630000
+ depth 2.530000
+endlayer
+
+...for each layer you want to have visible in the POVRAY file.
+
+You can see the list of layers used in the IBM design kits by 
+examining the cds2gds.map file.  It contains lines with layer 
+name, purpose, layer number, and datatype number.
+
+A utility called "maptolayer" is included which can be used to
+generate a dummy layers.config template from a cds2gds.map file 
+from a cadence kit.
+
+Example:
+  ./maptolayer < cds2gds.map > mylayers.config
+
+The dummy layers file has unique colors for each layer as well 
+as depth and thickness.  You must edit these to unhide  ("hidden
+no") the desired layers, and set correct depth and thickness for
+them.  The depth is the height of the top of the layer in
+microns, and  the thickness specifies how much further "down" it
+goes.  This utility IGNORES the datatype information in the map 
+file, and this may require tweaks on the part of the user to fix.
+
+In many GDS2 files, each metal layer uses a unique gdsno number to 
+identify it, and the datatype number can be ignored.  On others
+however, two different metal layers may use the same gdsno, but a 
+different datatype number.  To handle this, by default a shape is 
+mapped to a specific gdsno and datatype if there is an entry for 
+it in the layers.config file.  If there is no match, an entry that
+just specifies the gdsno is used.  You may need to add complete 
+newlayer...endlayer sections for layers that share gdsno values.
+
+This can also be used if you  want to make objects look different
+even if they are on the  same physical level.  For example, by
+using the datatype  parameter, you might have vias be a different
+color than viabars.
+
+Sample files "layers.config.5AM.4ML" and "layers.config.7HP.5ML"
+are included.  The 5AM file does not use datatypes, but the 
+7HP one does.  IBM may change the mapping with each kit revision,
+but hopefully they will not.
+
+The colors used in the povray output are those supplied in the 
+layers.config file.  Hatch/fill is ignored for povray output.  You
+can generate  a povray file of the cell "topcell" in a gds2 file
+"mydesign.gds2" using the command:
+
+ gdsreader -i mydesign.gds2 -c mylayers.config -s topcell
+
+By default output will be stored in the file "result.pov". A 
+postscript file will be called result.ps, etc.  You can select 
+any subcells in the gds2 file by giving it's name instead of 
+the "topcell".
+
+Other  command line options can be used to change the default
+output file names. The POV scene file is complete with a camera 
+and light source, but they  should be repositioned/adjusted to get
+a good  view.  A sample command to  quickly render the scene might
+be:
+
+ povray +P +W640 +H480 +Q2 -I result.pov
+   (note: This only works on new versions of povray, see
+     below for an alternate command.)
+
+This will display an image on the screen.  Click on it to close
+the window.  Read the documentation on POVRAY before trying to
+edit  the .pov file.  The following will render the same image to
+a file called 'result.ppm' in ppm format:
+
+ povray -D0 +W640 +H480 +Q2 -I result.pov +FP
+
+You can view this with 'xv result.ppm'
+
+A much nicer picture or movie can be created using shadows and 
+anti-aliasing options but that is beyond the scope of this 
+README file.  Consult the POVRAY documentation first.
+
+Note that the top cell object is instanced at the very bottom
+of the pov file and it is usually scaled so that the micro-based 
+vertical dimensions are proportional to the integer-grid based 
+layout dimensions.
+
+You might wish to add a plane representing the substrate by 
+appending something like:
+
+plane {
+ <0,1,0>, -30
+ texture { pigment { color rgb <0.400000,0.400000,0.400000> } }
+}
+
+
+...to the end of the POVRAY file.
+
+  Good luck with this...
+   
+     - Pete
+
+
+
+
+
+
+
+
+
+
+

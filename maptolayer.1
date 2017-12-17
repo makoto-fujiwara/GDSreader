@@ -1,0 +1,76 @@
+.TH "maptolayer" "1" "0.3.1" "Peter F. Curran (curran@rpi.edu)" "Utility"
+.SH "NAME"
+.LP 
+maptolayer \- Utility to generate layers.config files 
+
+.SH "SYNTAX"
+.LP 
+maptolayer < gdctocds.map > layers.config
+.SH "DESCRIPTION"
+.LP 
+This program produces reads a Cadence kit gdstocds.map file on standard input and produces a simple layers.config file suitable for use with the gdsreader program.  The layers.config file will have all the layers hidden and will have 
+a unique color and depth generated for each.  The user must unhide layers, (hidden no), and set desired thickness 
+and depth info if POVRAY output is desired.
+.SH "OPTIONS"
+.LP 
+.TP 
+\fBNONE\fR
+.SH "FILES"
+.LP 
+\fBNONE\fR
+.br 
+.SH "ENVIRONMENT VARIABLES"
+.LP 
+.TP 
+\fBNONE\fP
+No special Environment variables
+.SH "EXAMPLES"
+.LP 
+To run this program the standard way type:
+.LP 
+ maptolayer < gdctocds.map > layers.config
+.br 
+ 
+(This would produce a layers.config file ready for editing.)
+.br 
+
+In the install directory, under doc/gdsreader\-\fIVERSION\fR, there should be a sample test.gds and layers.config file.  Read the documentation there for details about the gdsreader program. The layers.config file should contains layer descriptions of the form:
+.br 
+\fB[...]\fR
+.br 
+newlayer
+.br 
+  gdsno 15
+.br 
+  hidden no
+.br 
+  name Ndiff
+.br 
+  red 0.9
+.br 
+  green 0.1
+.br 
+  blue 0.9
+.br 
+  fill no
+.br 
+  hatch no
+.br 
+  thickness 0.1
+.br 
+  depth \-0.02
+.br 
+endlayer
+.br 
+\fB[...]\fR
+.br 
+
+The depth and thickness parameters are only used for povray output.
+
+.br 
+.SH "AUTHORS"
+.LP 
+Peter F. Curran (povray mods) <curran@rpi.edu>
+.SH "SEE ALSO"
+.LP 
+gdsreader(1), povray(1)

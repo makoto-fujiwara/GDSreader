@@ -1,0 +1,46 @@
+
+
+2005-03-01
+        
+	* Modifications(Pete Curran)
+          *  Fixed mirroring issues in PS, and now magnification works 
+	        for supported shapes.
+          *  In order to handle my gds needs, added a datatype parameter 
+                to the config format to supplement the gdsno.
+	  *  Added a first permanent dummy psStyle which is hidden so that
+	        unused layers could point to it.
+	  *  Added default configs: (5AM.4ML,7HP.5ML)
+
+2005-02-18
+
+	* Modifications(Pete Curran) to produce povray files
+	  * Added depth and thickness parameters to the config format.
+	  * Made some changes to basic structs like psStyle and layer.
+	  * Added a utility to convert map files to config file 
+              templates.
+	  * Added basic man pages
+
+1999-04-06
+
+	* GDSreader.0.3 release.
+
+	* fixed bugs related to:
+		- path end type (added extended mode)
+		- aref handling code
+
+	* added HPGL/2 support. Currently there are a lot of ugly constants here
+	  and there. Their place will be in a rc file.
+	  The program has been tested on a full IC layout and the results are at
+	  least acceptable (everything looks OK except label indentation). 
+
+1999-03-10
+
+	* GDSreader.0.2 release.
+
+	* minor revision that adds support for TEXT element printing and irons
+	  out some bugs related to AREF/SREF interpretation
+
+1999-02-19
+
+	* Initial revision of GDSreader, a GDSii to PostScript/HPGL2 converter
+

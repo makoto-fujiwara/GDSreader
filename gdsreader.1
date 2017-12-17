@@ -1,0 +1,95 @@
+.TH "gdsreader" "1" "0.3.1" "Serban-Mihai Popescu (serbanp@ix.netcom.com)" "Utility"
+.SH "NAME"
+.LP 
+gdsreader \- simple Calma parser/printer tool
+
+.SH "SYNTAX"
+.LP 
+gdsreader [\fI\-h|\-\-help\fP]
+.LP 
+gdsreader [\fI\-i|\-\-ifile\fP <\fIfilename\fP>]  [\fI\-H|\-\-hpglfile\fP <\fIfilename\fP>] [\fI\-p|\-\-psfile\fP <\fIfilename\fP>] [\fI\-v|\-\-povfile\fP <\fIfilename\fP>] [\fI\-c|\-\-configfile\fP <\fIfilename\fP>] [\fI\-s|\-\-struct\fP <\fIfilename\fP>]
+.SH "DESCRIPTION"
+.LP 
+This program produces HPGL, PS, and POVRAY scene files from Calma (GDS2) files.  To do this it requires a configuration file  supplied by the user describing the GDS layers and the preferences as to how they be drawn.
+.SH "OPTIONS"
+.LP 
+.TP 
+\-h, \-\-help:              prints this help text
+.TP 
+\-H, \-\-hpglfile "file":   opens "file" for writing HPGL (defaults to result.plt)
+.TP 
+\-p, \-\-psfile "file":     opens "file" for writing PostScript (defaults to result.ps)
+.TP 
+\-v, \-\-povfile "file":     opens "file" for writing POVRAY (defaults to result.pov)                         
+.TP 
+\-i, \-\-ifile "file":      opens "file" as the GDSii input file (if not specified, stdin is used)
+.TP 
+\-c, \-\-configfile "file": opens "file" as the layers definition file (defaults to .layers.config)
+.TP 
+\-s, \-\-struct "sname":    "sname" is the top cell to be printed (if not specified, the names of all structures and layers are written to stdout.  No PS/HPGL/POV files are generated)
+.SH "FILES"
+.LP 
+\fIresult.*, *.gds, layers.config\fR
+.br 
+.SH "ENVIRONMENT VARIABLES"
+.LP 
+.TP 
+.br 
+
+\fBNONE\fP
+No special Environment variables
+.SH "EXAMPLES"
+.LP 
+To run this program the standard way type:
+.LP 
+gdsreader \-i mygdsfile.gds \-c mylayers.config
+.br 
+ 
+(This would produce result.ps, result.plt, and result.pov)
+
+.br 
+
+In the install directory, under doc/gdsreader, there should be a sample test.gds and layers.config file.  The layers.config file should contain layer descriptions of the form:
+
+.br 
+
+\fB[...]\fR
+.br 
+newlayer
+.br 
+  gdsno 15
+.br 
+  hidden no
+.br 
+  name Ndiff
+.br 
+  red 0.9
+.br 
+  green 0.1
+.br 
+  blue 0.9
+.br 
+  fill no
+.br 
+  hatch no
+.br 
+  thickness 0.1
+.br 
+  depth \-0.02
+.br 
+endlayer
+.br 
+\fB[...]\fR
+.br 
+
+The depth and thickness parameters are only used for povray output.
+
+.br 
+.SH "AUTHORS"
+.LP 
+Serban\-Mihai Popescu <serbanp@ix.netcom.com>
+.br 
+Peter F. Curran (povray mods) <curran@rpi.edu>
+.SH "SEE ALSO"
+.LP 
+maptolayer(1), povray(1)
