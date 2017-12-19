@@ -24,6 +24,17 @@
 #include <GDSconsts.h>
 #include <GDSaux.h>
 
+/*
+http://www.iue.tuwien.ac.at/phd/minixhofer/node52.html
+
+The last element of a GDS II file is the box. Following the BOX record
+are the optional ELFLAGS and PLEX records, a mandatory LAYER record, a
+BOXTYPE record with a zero argument, and an XY record. The XY must
+contain five points that describe a closed, four-sided box. Unlike the
+boundary, this is not a filled figure. Therefore it cannot be used for
+IC geometry.
+*/
+
 void
 BoxToHPGL(FILE *hpglfile, boxEl *box, PSStyle psStyle)
 {
