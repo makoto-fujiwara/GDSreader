@@ -24,16 +24,6 @@
 #include <GDSconsts.h>
 #include <GDSaux.h>
 
-/*
-http://www.iue.tuwien.ac.at/phd/minixhofer/node52.html
-
-The last element of a GDS II file is the box. Following the BOX record
-are the optional ELFLAGS and PLEX records, a mandatory LAYER record, a
-BOXTYPE record with a zero argument, and an XY record. The XY must
-contain five points that describe a closed, four-sided box. Unlike the
-boundary, this is not a filled figure. Therefore it cannot be used for
-IC geometry.
-*/
 
 void
 BoxToHPGL(FILE *hpglfile, boxEl *box, PSStyle psStyle)
@@ -67,9 +57,98 @@ GDSdupBox(boxEl *box)
   return NULL;
 }
 
+/*
+http://www.iue.tuwien.ac.at/phd/minixhofer/node52.html
+
+The last element of a GDS II file is the box. Following the BOX record
+are the optional ELFLAGS and PLEX records, a mandatory LAYER record, a
+BOXTYPE record with a zero argument, and an XY record. The XY must
+contain five points that describe a closed, four-sided box. Unlike the
+boundary, this is not a filled figure. Therefore it cannot be used for
+IC geometry.
+*/
+
+/*
+  BOX
+  ELFLAGS
+  PLEX
+  LAYER
+  XY
+*/
 GDScell *
 GDSreadBox(int gdsfildes, GDSstruct *structptr)
 {
-  fprintf(stderr, "READING BOX NOT YET IMPLEMENTED\n");
+
+  unsigned char *record;
+  int i, nbytes, layerno,datatype;
+  layer *layerptr;
+  GDScell *newcell;
+  boxEl *boxptr;
+
+  boxptr = (boxEl *)MALLOC(sizeof(pathEl));
+  newcell = (GDScell *)MALLOC(sizeof(GDScell));
+  newcell->type = BOX;
+  newcell->detail.box = boxptr;
+
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != ELFLAGS)
+  {
+    fprintf(stderr, " ** Missing ELFAGS field in BOX element. skipping\n");
+  }
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != PLEX)
+  {
+    fprintf(stderr, " ** Missing PLEX field in BOX element. skipping\n");
+  }
+
+#if 1
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != LAYER)
+  {
+    fprintf(stderr, " %04d Missing LAYER field in BOX element. skipping\n", __LINE__ );
+  }
+#endif
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != ENDEL)
+  {
+  fprintf(stderr, " %04d Missing ENDEL field in BOX element. Abort!\n",__LINE__);  exit(1);  }
+
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != BOX) {
+    fprintf(stderr, "Missing BOX field in BOX element. Abort!\n"); exit(1);  }
+
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != LAYER)
+  {
+    fprintf(stderr, "%04d Missing LAYER field in BOX element. Abort!\n", __LINE__ );  exit(1);  }
+
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != BOXTYPE)
+  {
+    fprintf(stderr, "Missing BOXTYPE field in BOX element. Abort!\n");  exit(1);  }
+
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != XY)  {
+    fprintf(stderr, "Missing XY field in BOX element. Abort!\n");   exit(1);  }
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != ENDEL)  {
+    fprintf(stderr, "Missing  ENDEL field in BOX element. Abort!\n");    exit(1);  }
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != BOX) {
+    fprintf(stderr, "Missing  BOX field in BOX element. Abort!\n");    exit(1);  }
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != LAYER) {
+    fprintf(stderr, "%04d Missing LAYER field in BOX element. Abort!\n", __LINE__ );  exit(1);  }
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != BOXTYPE)  {
+    fprintf(stderr, "Missing BOXTYPE field in BOX element. Abort!\n");  exit(1);  }
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != XY)  {
+    fprintf(stderr, "Missing XY field in BOX element. Abort!\n");   exit(1);  }
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != ENDEL)  {
+    fprintf(stderr, "Missing  ENDEL field in BOX element. Abort!\n");    exit(1);  }
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != BOUNDARY)  {
+    fprintf(stderr, "Missing  ENDEL field in BOX element. Abort!\n");    exit(1);  }
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != LAYER) {
+    fprintf(stderr, "%04d Missing LAYER field in BOX element. Abort!\n", __LINE__ );  exit(1);  }
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != DATATYPE) {
+    fprintf(stderr, "%04d Missing LAYER field in BOX element. Abort!\n", __LINE__ );  exit(1);  }
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != XY)  {
+    fprintf(stderr, "Missing XY field in BOX element. Abort!\n");   exit(1);  }
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != ENDEL)  {
+    fprintf(stderr, "Missing  ENDEL field in BOX element. Abort!\n");    exit(1);  }
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != BOUNDARY)  {
+    fprintf(stderr, "Missing  ENDEL field in BOX element. Abort!\n");    exit(1);  }
+  int tmp;
+  tmp = GDSreadRecord(gdsfildes, &record, &nbytes);
+  printf ("%04d, %04x %0d\n", __LINE__, tmp, nbytes);
+
   return NULL;
 }
