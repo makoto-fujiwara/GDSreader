@@ -76,26 +76,27 @@ GDSreadBoxBoundary(int gdsfildes, GDSstruct *structptr)
     if(GDSreadRecord(gdsfildes, &record, &nbytes) != LAYER) {
     fprintf(stderr, "%04d Missing LAYER field in BOX element. Abort!\n", __LINE__ );  exit(1);  }
   layerno = GDSreadInt2(record + 2);
-  printf (" %04d layerno %02d\n", __LINE__, layerno);
+  //  printf (" %04d layerno %02d\n", __LINE__, layerno);
   FREE(record);
 
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != DATATYPE) {
     fprintf(stderr, "%04d Missing LAYER field in BOX element. Abort!\n", __LINE__ );  exit(1);  }
   datatype = GDSreadInt2(record + 2);
-  printf (" %04d datatype %02d\n", __LINE__, datatype);
+  //  printf (" %04d datatype %02d\n", __LINE__, datatype);
   FREE(record);
 
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != XY)  {
     fprintf(stderr, "Missing XY field in BOX element. Abort!\n");   exit(1);  }
-  //  signed int x, y;
 
   x = GDSreadInt4(record + 2);
   y = GDSreadInt4(record + 6);
-  fprintf(stderr, " %04d x, y: %08d, %08d\n",__LINE__, x, y);
+  //  fprintf(stderr, " %04d x, y: %08d, %08d\n",__LINE__, x, y);
   FREE(record);
+ fprintf(stderr, " %04d layno: %02d, datatype: %02d x, y: %08d, %08d\n",
+	 layerno, datatype, x, y);
 
 if(GDSreadRecord(gdsfildes, &record, &nbytes) != ENDEL)  {
-    fprintf(stderr, "Missing  ENDEL field in BOX element. Abort!\n");    exit(1);  }
+  fprintf(stderr, " %04d Missing  ENDEL field in BOX element. Abort!\n", __LINE__);    exit(1);  }
   FREE(record);
   return NULL;
 }
@@ -138,7 +139,7 @@ GDSreadBoxBox(int gdsfildes, GDSstruct *structptr)
   FREE(record);
 
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != ENDEL)  {
-    fprintf(stderr, "Missing  ENDEL field in BOX element. Abort!\n");    exit(1);  }
+    fprintf(stderr, " %04d Missing  ENDEL field in BOX element. Abort!\n", __LINE__);    exit(1);  }
   FREE(record);
   return NULL;
 }
