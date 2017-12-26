@@ -68,7 +68,6 @@ GDSreadBoxBoundary(int gdsfildes, GDSstruct *structptr)
   boxEl *boxptr;
   int tmp, x, y;
   
-  FREE(record);
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != BOUNDARY)  {
     fprintf(stderr, "Missing  ENDEL field in BOX element. Abort!\n");    exit(1);  }
   FREE(record);
@@ -237,7 +236,7 @@ GDSreadBox(int gdsfildes, GDSstruct *structptr)
     fprintf(stderr, "Missing  ENDEL field in BOX element. Abort!\n");    exit(1);  }
   FREE(record);
 
-#if 1
+#if 0
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != BOUNDARY)  {
     fprintf(stderr, "Missing  ENDEL field in BOX element. Abort!\n");    exit(1);  }
   FREE(record);
