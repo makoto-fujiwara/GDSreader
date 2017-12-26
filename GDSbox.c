@@ -24,7 +24,6 @@
 #include <GDSconsts.h>
 #include <GDSaux.h>
 
-
 void
 BoxToHPGL(FILE *hpglfile, boxEl *box, PSStyle psStyle)
 {
@@ -69,17 +68,17 @@ IC geometry.
 
 /*
   BOX
-  ELFLAGS
-  PLEX
   LAYER
+  BOXTYPE
   XY
+  ENDEL
 */
 GDScell *
 GDSreadBox(int gdsfildes, GDSstruct *structptr)
 {
 
   unsigned char *record;
-  int i, nbytes, layerno, datatype;
+  int i, nbytes, layerno, datatype, boxtype;
   layer *layerptr;
   GDScell *newcell;
   boxEl *boxptr;
@@ -93,13 +92,11 @@ GDSreadBox(int gdsfildes, GDSstruct *structptr)
   if(tmp = GDSreadRecord(gdsfildes, &record, &nbytes) != LAYER) {
     fprintf(stderr, "%04d Missing LAYER field in BOX element %02x. Abort!\n", __LINE__, tmp );  exit(1);  }
   layerno = GDSreadInt2(record + 2);
-
   FREE(record);
 
     if(tmp = GDSreadRecord(gdsfildes, &record, &nbytes) != BOXTYPE) {
     fprintf(stderr, "%04d Missing LAYER field in BOX element %02x. Abort!\n", __LINE__, tmp );  exit(1);  }
-  layerno = GDSreadInt2(record + 2);
-
+  boxtype = GDSreadInt2(record + 2);
   FREE(record);
 
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != XY)  {
@@ -109,7 +106,7 @@ GDSreadBox(int gdsfildes, GDSstruct *structptr)
   y = GDSreadInt4(record + 6);
   FREE(record);
 
-  //  fprintf(stderr, " %04d layerno: %02d x, y: %08d, %08d\n",__LINE__, layerno, x, y);
+  fprintf(stdout, " %04d layerno: %02d boxtype %02d x, y: %08d, %08d\n",__LINE__, layerno, boxtype, x, y);
 
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != ENDEL)  {
     fprintf(stderr, " %04d Missing  ENDEL field in BOX element. Abort!\n", __LINE__);    exit(1);  }
