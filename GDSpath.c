@@ -430,7 +430,7 @@ GDSreadPath(int gdsfildes, GDSstruct *structptr)
   fprintf(stdout, "Path on layer %d, datatype %d, of type %d with width = %d:\n",
           layerno, layerptr->datatype,pathptr->pathtype, pathptr->width);
   for(i = 0; i < pathptr->numpoints; i++)
-    fprintf(stdout, "point[%d] = %d %d\n",
+    fprintf(stdout, "point[%d] = %9d %9d\n",
             i, (pathptr->points[i]).x, (pathptr->points[i]).y);
   return newcell;
 }
