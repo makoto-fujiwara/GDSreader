@@ -56,64 +56,6 @@ GDSdupBox(boxEl *box)
   fprintf(stderr, "NOT YET IMPLEMENTED\n");
   return NULL;
 }
-/* Boundary Layer DataType XY */
-
-GDScell *
-GDSreadBoxBoundary(int gdsfildes, GDSstruct *structptr)
-{
-  unsigned char *record;
-  int i, nbytes, layerno,datatype;
-  layer *layerptr;
-  GDScell *newcell;
-  boxEl *boxptr;
-  int tmp, x, y;
-
-  printf(" %04d  ****  %s %s  ", __LINE__, __func__, __FILE__);
-  //if(GDSreadRecord(gdsfildes, &record, &nbytes) != BOUNDARY)  {
-  //    fprintf(stderr, "Missing  ENDEL field in BOX element. Abort!\n");    exit(1);  }
-
-    if(GDSreadRecord(gdsfildes, &record, &nbytes) != LAYER) {
-    fprintf(stderr, "%04d Missing LAYER field in BOX element. Abort!\n", __LINE__ );  exit(1);  }
-  layerno = GDSreadInt2(record + 2);
-  //  printf (" %04d layerno %02d\n", __LINE__, layerno);
-  FREE(record);
-
-  if(GDSreadRecord(gdsfildes, &record, &nbytes) != DATATYPE) {
-    fprintf(stderr, "%04d Missing LAYER field in BOX element. Abort!\n", __LINE__ );  exit(1);  }
-  datatype = GDSreadInt2(record + 2);
-  //  printf (" %04d datatype %02d\n", __LINE__, datatype);
-  FREE(record);
-
-  if(GDSreadRecord(gdsfildes, &record, &nbytes) != XY)  {
-    fprintf(stderr, "Missing XY field in BOX element. Abort!\n");   exit(1);  }
-
-  x = GDSreadInt4(record + 2);
-  y = GDSreadInt4(record + 6);
-  //  fprintf(stderr, " %04d x, y: %08d, %08d\n",__LINE__, x, y);
-  FREE(record);
- fprintf(stderr, " %04d layno: %02d, datatype: %02d x, y: %08d, %08d\n",
-	 layerno, datatype, x, y);
-
-if(GDSreadRecord(gdsfildes, &record, &nbytes) != ENDEL)  {
-  fprintf(stderr, " %04d Missing  ENDEL field in BOX element. Abort!\n", __LINE__);    exit(1);  }
-  FREE(record);
-  return NULL;
-}
-
-/* Box Layer BoxType XY */
-
-GDScell *
-GDSreadBoxBox(int gdsfildes, GDSstruct *structptr)
-{
-  unsigned char *record;
-  int i, nbytes, layerno,datatype;
-  layer *layerptr;
-  GDScell *newcell;
-  boxEl *boxptr;
-  int tmp;
-  int x,y;
-
-}
 /*
 http://www.iue.tuwien.ac.at/phd/minixhofer/node52.html
 
@@ -148,10 +90,6 @@ GDSreadBox(int gdsfildes, GDSstruct *structptr)
   newcell->type = BOX;
   newcell->detail.box = boxptr;
 
-#if 0
-    tmp = GDSreadRecord(gdsfildes, &record, &nbytes);
-  printf (" %04d %04x %0d\n", __LINE__, tmp, nbytes);
-#endif
   if(tmp = GDSreadRecord(gdsfildes, &record, &nbytes) != LAYER) {
     fprintf(stderr, "%04d Missing LAYER field in BOX element %02x. Abort!\n", __LINE__, tmp );  exit(1);  }
   layerno = GDSreadInt2(record + 2);
