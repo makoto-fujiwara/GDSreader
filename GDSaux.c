@@ -328,9 +328,13 @@ GDSaddDates(GDSlibrary* libptr, unsigned char* record)
   ah = GDSreadInt2(record + 20);
   ami = GDSreadInt2(record + 22);
   as = GDSreadInt2(record + 24);
-  sprintf(string, "%02d/%02d/%02d at %02d:%02d:%02d", mmo, md, my + 1900, mh, mmi, ms);
+
+  if (my < 1900) { my  += 1900;}
+  if (ay < 1900) { ay  += 1900;}  
+
+  sprintf(string, "%02d/%02d/%02d at %02d:%02d:%02d", mmo, md, my, mh, mmi, ms);
   libptr->lastmod = strdup(string);
-  sprintf(string, "%02d/%02d/%02d at %02d:%02d:%02d", amo, ad, ay + 1900, ah, ami, as);
+  sprintf(string, "%02d/%02d/%02d at %02d:%02d:%02d", amo, ad, ay, ah, ami, as);
   libptr->lastacc = strdup(string);
 }
 
