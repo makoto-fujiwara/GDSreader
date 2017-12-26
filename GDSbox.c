@@ -207,8 +207,16 @@ GDSreadBox(int gdsfildes, GDSstruct *structptr)
   /* 8 */   GDSreadBoxBox     (gdsfildes, structptr);
   /* 9 */   GDSreadBoxBox     (gdsfildes, structptr);
   /*10 */   GDSreadBoxBox     (gdsfildes, structptr);
-  /*11 */   GDSreadBoxBox     (gdsfildes, structptr);    
-
+  /*11 */   GDSreadBoxBox     (gdsfildes, structptr);
+  /*12 */   GDSreadBoxBox     (gdsfildes, structptr);      
+  /*
+ 0214 002d 4 -> BOX 
+ 0217 000d 6 -> LAYER
+   */
+  int n;
+  for (n = 0; n<10;n++) {
+     GDSreadBoxBox     (gdsfildes, structptr);
+  }
 
   tmp = GDSreadRecord(gdsfildes, &record, &nbytes);
   printf (" %04d %04x %0d\n", __LINE__, tmp, nbytes);
