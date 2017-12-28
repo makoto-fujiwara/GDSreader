@@ -78,24 +78,22 @@ GDSreadBox(int gdsfildes, GDSstruct *structptr)
 {
 
   unsigned char *record;
-  int i, nbytes, layerno, datatype, boxtype;
-  layer *layerptr;
+  int  nbytes, layerno, boxtype;
   GDScell *newcell;
   boxEl *boxptr;
-  int tmp;
 
   boxptr = (boxEl *)MALLOC(sizeof(pathEl));
   newcell = (GDScell *)MALLOC(sizeof(GDScell));
   newcell->type = BOX;
   newcell->detail.box = boxptr;
 
-  if(tmp = GDSreadRecord(gdsfildes, &record, &nbytes) != LAYER) {
-    fprintf(stderr, "%04d Missing LAYER field in BOX element %02x. Abort!\n", __LINE__, tmp );  exit(1);  }
+  if(GDSreadRecord(gdsfildes, &record, &nbytes)!= LAYER) {
+    fprintf(stderr, "%04d Missing LAYER field in BOX element Abort!\n", __LINE__);  exit(1);  }
   layerno = GDSreadInt2(record + 2);
   FREE(record);
 
-    if(tmp = GDSreadRecord(gdsfildes, &record, &nbytes) != BOXTYPE) {
-    fprintf(stderr, "%04d Missing LAYER field in BOX element %02x. Abort!\n", __LINE__, tmp );  exit(1);  }
+  if(GDSreadRecord(gdsfildes, &record, &nbytes) != BOXTYPE) {
+    fprintf(stderr, "%04d Missing LAYER field in BOX element. Abort!\n", __LINE__);  exit(1);  }
   boxtype = GDSreadInt2(record + 2);
   FREE(record);
 
