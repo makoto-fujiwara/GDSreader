@@ -104,7 +104,7 @@ GDSreadBox(int gdsfildes, GDSstruct *structptr)
   y = GDSreadInt4(record + 6);
   FREE(record);
 
-  fprintf(stdout, " %04d layerno: %02d boxtype %02d x, y: %08d, %08d\n",__LINE__, layerno, boxtype, x, y);
+  fprintf(stdout, " %04d %s layerno: %02d boxtype %02d x, y: %08d, %08d\n",__LINE__, __func__, layerno, boxtype, x, y);
 
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != ENDEL)  {
     fprintf(stderr, " %04d Missing  ENDEL field in BOX element. Abort!\n", __LINE__);    exit(1);  }
