@@ -355,7 +355,9 @@ GDSreadSref(int gdsfildes, GDSstruct *structptr)
 
     srefptr->transfptr = GDSgetTransf(ref, angle, mag, mirror);
 
-  fprintf(stdout, "Sref at %d,%d, angle = %.2e, mag = %.2e, mirror = %d of cell named \"%s\"\n",
+  fprintf(stdout, " %04d %s Sref at %9d,%9d, angle = %.2e, mag = %.2e, mirror = %d of cell named \"%s\"\n",
+	  __LINE__, __func__,
           ref.x, ref.y, angle, mag, mirror, srefptr->refname);
   return newcell;
 }
+

@@ -177,7 +177,7 @@ GDSreadLib(int gdsfildes)
           if(!strcmp(structptr1->name, cellptr->detail.sref->refname))
           {
             cellptr->detail.sref->strptr = structptr1;
-            fprintf(stdout, "Fixed reference for SREF \"%s\"\n",
+            fprintf(stdout, " %04d %s Fixed reference for SREF \"%s\"\n", __LINE__, __func__,
                     cellptr->detail.sref->refname);
             break;
           }
@@ -189,7 +189,7 @@ GDSreadLib(int gdsfildes)
           if(!strcmp(structptr1->name, cellptr->detail.aref->refname))
           {
             cellptr->detail.aref->strptr = structptr1;
-            fprintf(stdout, "Fixed reference for AREF \"%s\"\n",
+            fprintf(stdout, " %04d %s Fixed reference for AREF \"%s\"\n", __LINE__, __func__,
                     cellptr->detail.aref->refname);
             break;
           }

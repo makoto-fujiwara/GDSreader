@@ -320,7 +320,8 @@ GDSreadAref(int gdsfildes, GDSstruct *structptr)
   }
   FREE(record);
 
-  fprintf(stdout, "Aref at %d,%d/ of cell named \"%s\", c/r  = %d/%d, spacing = %d/%d, mirror = %d\n",
+  fprintf(stdout, " %04d %s Aref at %9d,%9d of cell named \"%s\", c/r  = %d/%d, spacing = %d/%d, mirror = %d\n", 
+	  __LINE__, __func__,
           ref.x, ref.y, arefptr->refname, arefptr->cols, arefptr->rows,
           arefptr->colspacing, arefptr->rowspacing, mirror);  
   return newcell;
