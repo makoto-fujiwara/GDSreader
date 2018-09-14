@@ -31,14 +31,17 @@
 #include <GDStoHPGL.h>
 #include <GDStoPS.h>
 #include <GDStoPOV.h>
+#include "GDSversion.h"
 
 static void
 printUsage(char *progname)
 {
+  char * version = GDS_READER_VERSION;
+  fprintf(stderr, " gdsreader version: %s\n", version);
   fprintf(stderr, "Usage:\n");
   fprintf(stderr, "%s [options]\n", progname);
   fprintf(stderr, "where options are:\n");
-  fprintf(stderr, "-h, --help:              prints this message\n");
+  fprintf(stderr, "-h, --help:              prints this message");
   fprintf(stderr, "-H, --hpglfile \"file\":   opens \"file\" for writing HPGL\n");
   fprintf(stderr, "                         defaults to %s\n", DEFAULT_HPGL_FILE);
   fprintf(stderr, "-p, --psfile \"file\":     opens \"file\" for writing PostScript\n");

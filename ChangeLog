@@ -1,7 +1,8 @@
-
+2018-09-14
+	* Skip ENDEL error, instead of abort
 
 2005-03-01
-        
+
 	* Modifications(Pete Curran)
           *  Fixed mirroring issues in PS, and now magnification works 
 	        for supported shapes.
