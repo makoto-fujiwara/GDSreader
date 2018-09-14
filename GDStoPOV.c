@@ -129,7 +129,7 @@ GDStoPOVCell(GDSlibrary *libptr, FILE *povfileptr, char *topcellname)
   bbox bbx;
   char *esctopcell=NULL;
   
-  double scalex, scaley, scale;
+  double scalex, scaley ; /*, scale; */
   int i=0,subcells=0;
 
 
@@ -151,7 +151,9 @@ GDStoPOVCell(GDSlibrary *libptr, FILE *povfileptr, char *topcellname)
   scalex = 8.5 * InternalScaleFactor * 72.0 * 0.85 / (bbx.ur.x - bbx.ll.x);
   scaley = 11.0 * InternalScaleFactor * 72.0 * 0.85 / (bbx.ur.y - bbx.ll.y);
   fprintf(stderr, "scalex = %f, scaley = %f\n", scalex, scaley);
+/*
   scale = (scalex < scaley) ? scalex : scaley;
+*/
 
   /* Loop through any layers not invisible. */
   esctopcell=GDSEscPovString(topcellname);

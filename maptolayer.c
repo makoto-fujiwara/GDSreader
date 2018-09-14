@@ -19,6 +19,7 @@ By default, I am now making all layers hidden.
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 
 

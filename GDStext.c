@@ -66,19 +66,21 @@ TextToPS(FILE *psfile, textEl *text, transform *transf, PSStyle psStyle)
 void
 TextToPOV(FILE *povfile, textEl *text, transform *transf, PSStyle psStyle)
 {
-  point pnt, ref00;
+/*
+  point pnt,ref00;
+*/
   transform *newtransf;
   /* fprintf(povfile,"// Rendering text...  Not yet implemented\n"); */
   if(text->layerptr->layerno != psStyle.gdsno)
     return;
 
   newtransf = GDStransfTransf(text->transfptr, transf);
-/*  fprintf(povfile, "//%s %.3f f\n", FONTNAME, FONTSIZE * text->mag); */
+/*  fprintf(povfile, "//%s %.3f f\n", FONTNAME, FONTSIZE * text->mag);
 
   ref00.x = 0;
   ref00.y = 0;
   pnt = GDStransfPoint(&ref00, newtransf);
-/*  fprintf(povfile, " // (%s) %d %d t\n",
+    fprintf(povfile, " // (%s) %d %d t\n",
           text->string, pnt.x / InternalScaleFactor,
           pnt.y / InternalScaleFactor); */
   GDSfreeTransf(newtransf);
