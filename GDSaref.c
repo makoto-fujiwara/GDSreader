@@ -315,8 +315,8 @@ GDSreadAref(int gdsfildes, GDSstruct *structptr)
 /*    arefptr->transfptr->c -= arefptr->rowspacing; */
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != ENDEL)
   {
-    fprintf(stderr, "Missing ENDEL field in AREF element. Abort!\n");
-    exit(1);
+    fprintf(stderr, "Missing ENDEL field in AREF element. Skipping!\n");
+    // exit(1);
   }
   FREE(record);
 

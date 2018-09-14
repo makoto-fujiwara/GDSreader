@@ -348,8 +348,8 @@ GDSreadSref(int gdsfildes, GDSstruct *structptr)
   }
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != ENDEL)
   {
-    fprintf(stderr, "Missing ENDEL field in SREF element. Abort!\n");
-    exit(1);
+    fprintf(stderr, "Missing ENDEL field in SREF element. Skipping!\n");
+    // exit(1);
   }
   FREE(record);
 
