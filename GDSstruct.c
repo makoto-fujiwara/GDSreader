@@ -119,7 +119,8 @@ GDSreadStruct(int gdsfildes, GDSlibrary *libptr)
 
   while(1)
   {
-    switch(GDSreadRecord(gdsfildes, &record, &nbytes))
+    int type = GDSreadRecord(gdsfildes, &record, &nbytes);
+    switch(type)
     {
       case STRNAME:
         if((structptr->name = GDSreadString(record + 2, nbytes - 4)) == NULL)
@@ -182,7 +183,7 @@ GDSreadStruct(int gdsfildes, GDSlibrary *libptr)
         FREE(record);
         return NULL;
       default:
-        fprintf(stderr, "Unknown record type\n");
+        fprintf(stderr, "%04d Unknown record type %d\n", __LINE__, type);
         break;
     }
     FREE(record);
