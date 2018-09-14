@@ -420,8 +420,9 @@ GDSreadBoundary(int gdsfildes, GDSstruct *structptr)
   fprintf(stdout, " %04d %s Boundary on layer %d, datatype %d:\n", __LINE__, __func__, layerno,
         layerptr->datatype);
   for(i = 0; i < boundaryptr->numpoints; i++)
-    fprintf(stdout, " %04d %s point[%03d] = %9d %9d\n", __LINE__, __func__,
-            i, (boundaryptr->points[i]).x, (boundaryptr->points[i]).y);
+    fprintf(stdout, " %04d GDSboudary: %s point[%03d/%03d] = %9d %9d\n",
+	    __LINE__, __func__, i, boundaryptr->numpoints  ,
+	    (boundaryptr->points[i]).x, (boundaryptr->points[i]).y);
   return newcell;
 }
 

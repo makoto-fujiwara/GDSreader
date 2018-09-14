@@ -182,6 +182,12 @@ GDSreadStruct(int gdsfildes, GDSlibrary *libptr)
         fprintf(stderr, "Incorrect record type in GDSreadStruct()\n");
         FREE(record);
         return NULL;
+      case PROPVALUE:
+        fprintf(stderr, "%04d Propvalue  %d\n",  __LINE__, type);
+        fprintf(stderr, "%04d Propvalue  %sd\n", __LINE__,
+		GDSreadString(record + 2, nbytes - 4));
+
+	break;
       default:
         fprintf(stderr, "%04d Unknown record type %d\n", __LINE__, type);
         break;
