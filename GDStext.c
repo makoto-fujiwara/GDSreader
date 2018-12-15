@@ -246,8 +246,7 @@ GDSreadText(int gdsfildes, GDSstruct *structptr)
 
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != PRESENTATION)
   {
-    fprintf(stderr, "Missing PRESENTATION field in TEXT element. Abort!\n");
-    exit(1);
+    fprintf(stderr, "Missing PRESENTATION field in TEXT element. Continuing!\n");
   }
   chunk = record[2];
   chunk &= 0x30;
@@ -374,14 +373,12 @@ GDSreadText(int gdsfildes, GDSstruct *structptr)
   }
   else
   {
-    fprintf(stderr, "Missing STRANS or XY field in TEXT element. Abort!\n");
-    exit(1);
+    fprintf(stderr, "Missing STRANS or XY field in TEXT element. Continuing!\n");
   }
 
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != STRING)
   {
-    fprintf(stderr, "Missing STRING field in TEXT element. Abort!\n");
-    exit(1);
+    fprintf(stderr, "Missing STRING field in TEXT element. Continuing!\n");
   }
   if((textptr->string = GDSreadString(record + 2, nbytes - 4)) == NULL) 
   {
@@ -392,8 +389,7 @@ GDSreadText(int gdsfildes, GDSstruct *structptr)
 
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != ENDEL)
   {
-    fprintf(stderr, "Missing ENDEL field in TEXT element. Abort!\n");
-    exit(1);
+    fprintf(stderr, "Missing ENDEL field in TEXT element. Continuing!\n");
   }
   FREE(record);
 
