@@ -337,7 +337,7 @@ GDSreadPath(int gdsfildes, GDSstruct *structptr)
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != LAYER)
   {
     fprintf(stderr, "Missing LAYER field in PATH element. Abort!\n");
-    exit(1);
+
   }
   layerno = GDSreadInt2(record + 2);
   FREE(record);
@@ -345,7 +345,7 @@ GDSreadPath(int gdsfildes, GDSstruct *structptr)
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != DATATYPE)
   {
     fprintf(stderr, "Missing DATATYPE field in PATH element. Abort!\n");
-    exit(1);
+
   }
   datatype = GDSreadInt2(record + 2);
   FREE(record);
@@ -374,7 +374,7 @@ GDSreadPath(int gdsfildes, GDSstruct *structptr)
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != PATHTYPE)
   {
     fprintf(stderr, "Missing PATHTYPE field in PATH element. Abort!\n");
-    exit(1);
+
   }
   pathptr->pathtype = GDSreadInt2(record + 2);
   FREE(record);
@@ -400,7 +400,7 @@ GDSreadPath(int gdsfildes, GDSstruct *structptr)
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != WIDTH)
   {
     fprintf(stderr, "Missing WIDTH field in PATH element. Abort!\n");
-    exit(1);
+
   }
   pathptr->width = GDSreadInt4(record + 2);
   FREE(record);
@@ -408,7 +408,7 @@ GDSreadPath(int gdsfildes, GDSstruct *structptr)
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != XY)
   {
     fprintf(stderr, "Missing XY field in PATH element. Abort!\n");
-    exit(1);
+
   }
   pathptr->numpoints = (nbytes - 2) / 8;
   pathptr->points = (point *)MALLOC(pathptr->numpoints * sizeof(point));
@@ -423,7 +423,7 @@ GDSreadPath(int gdsfildes, GDSstruct *structptr)
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != ENDEL)
   {
     fprintf(stderr, "Missing ENDEL field in PATH element. Abort!\n");
-    exit(1);
+
   }
   FREE(record);
 
