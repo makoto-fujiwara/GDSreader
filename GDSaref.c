@@ -293,7 +293,7 @@ GDSreadAref(int gdsfildes, GDSstruct *structptr)
   }
   if(col.y != 0)
   {
-    fprintf(stdout, "Error in AREF! The second point in XY is broken.\n");
+    fprintf(stdout, "Error in AREF! The second point in XY %3.2f (%d) is broken.\n", col.y, col.y );
 
   }
 
