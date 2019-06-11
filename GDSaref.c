@@ -288,20 +288,21 @@ GDSreadAref(int gdsfildes, GDSstruct *structptr)
 
   if(col.x < 0)
   {
-    fprintf(stdout, "Error in AREF! Found a y-axis mirrored array. This is impossible so I'm exiting.\n");
+    fprintf(stdout, " %04d Error in AREF (%s) Found a y-axis mirrored array. This is impossible so I'm exiting.\n", __LINE__, arefptr->transfptr);
     exit(1);    
   }
   if(col.y != 0)
   {
-    fprintf(stdout, "Error in AREF! The second point in XY %3.2f (%d) is broken.\n", col.y, col.y );
-
+    fprintf(stdout, " %04d Error in AREF (%s) The second point in XY %3.2f (%d) is broken.\n",
+	    __LINE__, arefptr-> refname, col.y, col.y );
   }
 
   row = GDSinvtransfPoint(&row, arefptr->transfptr);
 
   if(row.x != 0)
   {
-    fprintf(stdout, "Error in AREF! The third point in XY is broken.\n");
+    fprintf(stdout, " %04d Error in AREF (%s) The third point in XY is broken.\n",
+	    __LINE__, arefptr-> refname);
     exit(1);
   }
 
