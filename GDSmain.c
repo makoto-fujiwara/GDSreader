@@ -56,6 +56,8 @@ printUsage(char *progname)
   fprintf(stderr, "                         if not specified, the names of all structures\n");
   fprintf(stderr, "                         and layers # are written to stdout.\n");
   fprintf(stderr, "                         No PS/HPGL file are generated\n");
+  fprintf(stderr, "-u, --user-unit:         Coordinate will be shown by user Unit (not implemented yet)\n");
+  fprintf(stderr, "-S, --summary:           Show summary (not implemented yet)\n");
 }
 
 int
