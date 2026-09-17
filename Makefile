@@ -15,6 +15,8 @@ OBJS = GDSreader.o GDSmain.o GDSaux.o GDSboundary.o GDSpath.o \
 
 all: gdsreader maptolayer
 
+#.o: .c
+
 gdsreader: ${OBJS}
 	${CC} ${LDFLAGS} -o gdsreader ${OBJS} -lm
 

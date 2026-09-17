@@ -58,7 +58,7 @@ GDSreadUpToFirstStruct(int gdsfildes, GDSlibrary *libptr)
       case BGNLIB:
         GDSaddDates(libptr, record);
         fprintf(stdout, "lastmod = %s, lastacc = %s\n",
-                libptr->lastmod, libptr->lastacc);
+                libptr -> lastmod, libptr -> lastacc);
         break;
       case LIBDIRSIZE:
         fprintf(stderr, "Not yet handling LIBDIRSIZE!\n");
@@ -77,18 +77,18 @@ GDSreadUpToFirstStruct(int gdsfildes, GDSlibrary *libptr)
         fprintf(stderr, "Not yet handling FONTS!\n");
         break;
       case LIBNAME:
-        if((libptr->name = GDSreadString(record + 2, nbytes - 4)) == NULL)
+        if((libptr -> name = GDSreadString(record + 2, nbytes - 4)) == NULL)
         {
           fprintf(stderr, "Bad LIBNAME record. Aborting\n");
           exit(1);
         }
-        fprintf(stdout, "libname = %s\n", libptr->name);
+        fprintf(stdout, "libname = %s\n", libptr -> name);
         break;
       case UNITS:
-        libptr->userunit = GDSreadReal8(record + 2);
-        libptr->meterunit = GDSreadReal8(record + 10);
+        libptr -> userunit  = GDSreadReal8(record + 2);
+        libptr -> meterunit = GDSreadReal8(record + 10);
         fprintf(stdout, "userunit = %e, meterunit = %e\n",
-                libptr->userunit, libptr->meterunit);
+                libptr  ->  userunit, libptr ->  meterunit);
         break;
       case BGNSTR:
         /* should read the last modified/read dates */
@@ -116,21 +116,21 @@ GDSreadLib(int gdsfildes)
     exit(1);
   }
   libptr = (GDSlibrary *)MALLOC(sizeof(GDSlibrary));
-  libptr->structs = NULL;
+  libptr -> structs = NULL;
 
   GDSreadHeader(gdsfildes);
   GDSreadUpToFirstStruct(gdsfildes, libptr);
   while((structptr = GDSreadStruct(gdsfildes, libptr)) != NULL)
   {
     fprintf(outfile, "Read a struct named %s which contains the layers:\n",
-            structptr->name);
-    for(layerptr = structptr->layers;
-        layerptr != NULL; layerptr = layerptr->next)
-      fprintf(outfile, "no. %d, type %d,", layerptr->layerno,layerptr->datatype);
+            structptr -> name);
+    for(layerptr = structptr -> layers;
+        layerptr != NULL; layerptr = layerptr -> next)
+      fprintf(outfile, "no. %d, type %d,", layerptr -> layerno,layerptr -> datatype);
     fprintf(outfile, "\nand the cells:\n:");
-    for(cellptr = structptr->cells; cellptr != NULL; cellptr = cellptr->next)
+    for(cellptr = structptr -> cells; cellptr != NULL; cellptr = cellptr -> next)
     {
-      switch(cellptr->type)
+      switch(cellptr -> type)
       {
         case BOUNDARY:
           fprintf(outfile, "BOUNDARY, ");
@@ -139,10 +139,10 @@ GDSreadLib(int gdsfildes)
           fprintf(outfile, "PATH, ");
           break;
         case SREF:
-          fprintf(outfile, "SREF(%s), ", cellptr->detail.sref->refname);
+          fprintf(outfile, "SREF(%s), ", cellptr -> detail.sref -> refname);
           break;
         case AREF:
-          fprintf(outfile, "AREF(%s), ", cellptr->detail.aref->refname);
+          fprintf(outfile, "AREF(%s), ", cellptr -> detail.aref -> refname);
           break;
         case TEXT:
           fprintf(outfile, "TEXT, ");
@@ -159,38 +159,38 @@ GDSreadLib(int gdsfildes)
     fprintf(outfile, "\n\n");
 
 
-    structptr->next = libptr->structs;
-    libptr->structs = structptr;
+    structptr -> next = libptr -> structs;
+    libptr -> structs = structptr;
   }
 
   fclose(outfile);
   /* update the strptr pointers for SREF and AREF elements */
-  for(structptr = libptr->structs; structptr != NULL;
-      structptr = structptr->next)
-    for(cellptr = structptr->cells; cellptr != NULL;
-        cellptr = cellptr->next)
+  for(structptr = libptr -> structs; structptr != NULL;
+      structptr = structptr -> next)
+    for(cellptr = structptr -> cells; cellptr != NULL;
+        cellptr = cellptr -> next)
     {
-      if(cellptr->type == SREF)
+      if(cellptr -> type == SREF)
       {
-        for(structptr1 = libptr->structs; structptr1 != NULL;
-            structptr1 = structptr1->next)
-          if(!strcmp(structptr1->name, cellptr->detail.sref->refname))
+        for(structptr1 = libptr -> structs; structptr1 != NULL;
+            structptr1 = structptr1 -> next)
+          if(!strcmp(structptr1 -> name, cellptr -> detail.sref -> refname))
           {
-            cellptr->detail.sref->strptr = structptr1;
+            cellptr -> detail.sref -> strptr = structptr1;
             fprintf(stdout, " %04d %s Fixed reference for SREF \"%s\"\n", __LINE__, __func__,
-                    cellptr->detail.sref->refname);
+                    cellptr -> detail.sref -> refname);
             break;
           }
       }
-      else if(cellptr->type == AREF)
+      else if(cellptr -> type == AREF)
       {
-        for(structptr1 = libptr->structs; structptr1 != NULL;
-            structptr1 = structptr1->next)
-          if(!strcmp(structptr1->name, cellptr->detail.aref->refname))
+        for(structptr1 = libptr -> structs; structptr1 != NULL;
+            structptr1 = structptr1 -> next)
+          if(!strcmp(structptr1 -> name, cellptr -> detail.aref -> refname))
           {
-            cellptr->detail.aref->strptr = structptr1;
+            cellptr -> detail.aref -> strptr = structptr1;
             fprintf(stdout, " %04d %s Fixed reference for AREF \"%s\"\n", __LINE__, __func__,
-                    cellptr->detail.aref->refname);
+                    cellptr -> detail.aref -> refname);
             break;
           }
       }
@@ -203,11 +203,11 @@ GDSgetStructByName(GDSlibrary *library, char *structname)
 {
   GDSstruct *structptr;
   
-  for(structptr = library->structs;
-      structptr != NULL; structptr = structptr->next)
+  for(structptr = library -> structs;
+      structptr != NULL; structptr = structptr -> next)
   {
-    fprintf(stdout, "\"%s\"\n", structptr->name);
-    if(!strcmp(structptr->name, structname))
+    fprintf(stdout, "\"%s\"\n", structptr -> name);
+    if(!strcmp(structptr -> name, structname))
       break;
   }
   
