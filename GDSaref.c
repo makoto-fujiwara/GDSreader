@@ -288,13 +288,13 @@ GDSreadAref(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr )
 
   if(col.x < 0)
   {
-    fprintf(stdout, " %04d Error in AREF (%s) Found a y-axis mirrored array. This is impossible so I'm exiting.\n", __LINE__, arefptr -> transfptr);
+    fprintf(stdout, " %04d Error in AREF (%s) Found a y-axis mirrored array. This is impossible so I'm exiting.\n", __LINE__, (char *) arefptr -> transfptr);
     exit(1);    
   }
   if(col.y != 0)
   {
-    fprintf(stdout, " %04d Error in AREF (%s) The second point in XY %3.2f (%d) is broken.\n",
-	    __LINE__, arefptr ->  refname, col.y, col.y );
+    fprintf(stdout, " %04d Error in AREF (%s) The second point in XY %d (%d) is broken.\n",
+	    __LINE__, (char *) arefptr ->  refname, col.y, col.y );
   }
 
   row = GDSinvtransfPoint(&row, arefptr -> transfptr);
@@ -320,10 +320,20 @@ GDSreadAref(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr )
     // exit(1);
   }
   FREE(record);
-  fprintf (stderr, "%04d %5.5f\n", __LINE__, libptr -> userunit);
-  fprintf(stdout, " %04d %s Aref at %9d,%9d of cell named \"%s\", c/r  = %d/%d, spacing = %d/%d, mirror = %d\n", 
+  fprintf (stderr, "%04d  ***** userunit:  %5.5f ***** \n", __LINE__, libptr -> userunit);
+  double userunit = libptr -> userunit;
+  if (userunit == 0) { userunit = 1;}
+  fprintf(stdout, " %04d %s Aref at %7.3f,%11.3f  of cell named \"%-20s\", c/r = %4d/%4d,  spacing = %5.3f /%10.3f, \tmirror = %d, (userunit = %9.5f)\n", 
 	  __LINE__, __func__,
-          ref.x, ref.y, arefptr -> refname, arefptr -> cols, arefptr -> rows,
-          arefptr -> colspacing, arefptr -> rowspacing, mirror);  
+          ref.x * userunit,
+	  ref.y * userunit,
+	  arefptr -> refname,
+	  arefptr -> cols,
+	  arefptr -> rows,
+          arefptr -> colspacing  * userunit,
+	  arefptr -> rowspacing  * userunit,
+	  mirror,
+	  userunit
+	  );  
   return newcell;
 }
