@@ -147,7 +147,7 @@ ArefToHPGL(FILE *hpglfile, arefEl *aref, transform *transf, PSStyle psStyle)
 }
 
 GDScell *
-GDSreadAref(int gdsfildes, GDSstruct *structptr)
+GDSreadAref(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr )
 {
   unsigned char *record, chunk;
   int rectype, nbytes;
@@ -320,7 +320,7 @@ GDSreadAref(int gdsfildes, GDSstruct *structptr)
     // exit(1);
   }
   FREE(record);
-
+  fprintf (stderr, "%04d %5.5f\n", __LINE__, libptr -> userunit);
   fprintf(stdout, " %04d %s Aref at %9d,%9d of cell named \"%s\", c/r  = %d/%d, spacing = %d/%d, mirror = %d\n", 
 	  __LINE__, __func__,
           ref.x, ref.y, arefptr -> refname, arefptr -> cols, arefptr -> rows,

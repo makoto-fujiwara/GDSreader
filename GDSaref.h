@@ -26,7 +26,7 @@ extern void ArefToPOV(FILE *povfile, arefEl *aref,
                      transform *transf, PSStyle psStyle);
 extern void ArefToHPGL(FILE *hpglfile, arefEl *aref,
                      transform *transf, PSStyle psStyle);
-extern GDScell *GDSreadAref(int gdsfildes, GDSstruct *structptr);
+extern GDScell *GDSreadAref(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr );
 
 #endif /* _GDSaref_h_ */
 

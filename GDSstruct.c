@@ -143,13 +143,13 @@ GDSreadStruct(int gdsfildes, GDSlibrary *libptr)
         structptr->cells = newcell;
         break;
       case SREF:
-        if((newcell = GDSreadSref(gdsfildes, structptr)) == NULL)
+        if((newcell = GDSreadSref(gdsfildes, structptr, (GDSlibrary *) libptr)) == NULL)
           return NULL;
         newcell->next = structptr->cells;
         structptr->cells = newcell;
         break;
       case AREF:
-        if((newcell = GDSreadAref(gdsfildes, structptr)) == NULL)
+        if((newcell = GDSreadAref(gdsfildes, structptr, (GDSlibrary *) libptr )) == NULL)
           return NULL;
         newcell->next = structptr->cells;
         structptr->cells = newcell;

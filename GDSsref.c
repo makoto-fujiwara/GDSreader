@@ -236,7 +236,7 @@ SrefToHPGL(FILE *hpglfile, srefEl *sref, transform *transf, PSStyle psStyle)
 
 
 GDScell *
-GDSreadSref(int gdsfildes, GDSstruct *structptr)
+GDSreadSref(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr )
 {
   unsigned char *record, chunk;
   int rectype, nbytes;
