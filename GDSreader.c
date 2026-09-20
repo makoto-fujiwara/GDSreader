@@ -102,7 +102,7 @@ GDSreadUpToFirstStruct(int gdsfildes, GDSlibrary *libptr)
 }
 
 GDSlibrary *
-GDSreadLib(int gdsfildes)
+GDSreadLib(int gdsfildes, int show_summary)
 {
   FILE *outfile;
   GDSlibrary *libptr;

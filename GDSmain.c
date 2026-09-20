@@ -171,7 +171,7 @@ main(argc, argv)
   if(ifile == -1)
     ifile = 0;
   
-  libptr = GDSreadLib(ifile);
+  libptr = GDSreadLib(ifile, show_summary);
   if(libptr == NULL)
   {
     fprintf(stderr, "Couldn't read the Calma library. Exiting...\n");
