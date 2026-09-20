@@ -131,7 +131,7 @@ GDSreadStruct(int gdsfildes, GDSlibrary *libptr)
         fprintf(stdout, " %04d %s strname = %s\n", __LINE__, __func__, structptr->name);
         break;
       case BOUNDARY:
-        if((newcell = GDSreadBoundary(gdsfildes, structptr)) == NULL)
+        if((newcell = GDSreadBoundary(gdsfildes, structptr, libptr)) == NULL)
           return NULL;
         newcell->next = structptr->cells;
         structptr->cells = newcell;

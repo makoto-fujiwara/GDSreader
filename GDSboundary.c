@@ -344,7 +344,7 @@ GDStransfBoundary(boundaryEl *boundary, transform *transf)
 }
 
 GDScell *
-GDSreadBoundary(int gdsfildes, GDSstruct *structptr)
+GDSreadBoundary(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr)
 {
   unsigned char *record;
   int i, nbytes, layerno, datatype;
@@ -417,12 +417,15 @@ GDSreadBoundary(int gdsfildes, GDSstruct *structptr)
   }
   FREE(record);
 
-  fprintf(stdout, " %04d %s Boundary on layer %d, datatype %d:\n", __LINE__, __func__, layerno,
+  double userunit = libptr -> userunit;
+//  fprintf(stderr, "%04d, %5.7f\n", __LINE__, userunit );
+  fprintf(stdout, " %04d %s Boundary on layer %, datatype %d:\n", __LINE__, __func__, layerno,
         layerptr->datatype);
   for(i = 0; i < boundaryptr->numpoints; i++)
-    fprintf(stdout, " %04d GDSboudary: %s point[%03d/%03d] = %9d %9d\n",
-	    __LINE__, __func__, i, boundaryptr->numpoints  ,
-	    (boundaryptr->points[i]).x, (boundaryptr->points[i]).y);
+    fprintf(stdout, " %04d GDSboudary: %s point[%03d/%03d] = %9.3f %9.3f\n",
+	    __LINE__, __func__, i, boundaryptr -> numpoints  ,
+	    (boundaryptr->points[i]).x * userunit,
+	    (boundaryptr->points[i]).y * userunit);
   return newcell;
 }
 
