@@ -60,15 +60,20 @@ printUsage(char *progname)
   fprintf(stderr, "-S, --summary:           Show summary (not implemented yet)\n");
 }
 
+
 int
 main(argc, argv)
   int argc;
   char **argv;
+
 {
   GDSlibrary *libptr;
   int i, ifile = -1;
   char *configfile = NULL, *psfile = NULL, *povfile = NULL, *hpglfile = NULL, *structname = NULL;
   
+  int show_summary = 0;
+  int use_userunit = 0;
+
   for(i = 1; i < argc; i++)
   {
     if(!strcmp(argv[i], "-i") || !strcmp(argv[i], "--ifile"))
@@ -149,13 +154,11 @@ main(argc, argv)
     }
     else if(!strcmp(argv[i], "-S") || !strcmp(argv[i], "--summary"))
     {
-      printUsage(argv[0]);
-      exit(0);
+      show_summary = 1;
     }
     else if(!strcmp(argv[i], "-u") || !strcmp(argv[i], "--userunit"))
     {
-      printUsage(argv[0]);
-      exit(0);
+      use_userunit = 1;
     }
     else
     {

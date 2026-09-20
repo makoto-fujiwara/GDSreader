@@ -26,7 +26,7 @@ extern void PathToHPGL(FILE *hpglfile, pathEl *path, PSStyle psStyle);
 extern void GDSfreePath(GDScell *cell);
 extern GDScell *GDSdupPath(pathEl *path);
 extern void GDStransfPath(pathEl *path, transform *transf);
-extern GDScell *GDSreadPath(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr);
+extern GDScell *GDSreadPath(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr, int show_summary);
 
 #endif /* _GDSpath_h_ */
 

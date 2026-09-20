@@ -91,7 +91,7 @@ GDSgetStructBBox(GDSstruct *structptr)
 }
 
 GDSstruct *
-GDSreadStruct(int gdsfildes, GDSlibrary *libptr)
+GDSreadStruct(int gdsfildes, GDSlibrary *libptr, int show_summary)
 {
   unsigned char *record;
   int nbytes;
@@ -137,7 +137,7 @@ GDSreadStruct(int gdsfildes, GDSlibrary *libptr)
         structptr->cells = newcell;
         break;
       case PATH:
-        if((newcell = GDSreadPath(gdsfildes, structptr, (GDSlibrary *) libptr)) == NULL)
+        if((newcell = GDSreadPath(gdsfildes, structptr, (GDSlibrary *) libptr, show_summary)) == NULL)
           return NULL;
         newcell->next = structptr->cells;
         structptr->cells = newcell;
