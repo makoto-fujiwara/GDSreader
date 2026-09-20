@@ -321,7 +321,7 @@ GDStransfPath(pathEl *path, transform *transf)
 }
 
 GDScell *
-GDSreadPath(int gdsfildes, GDSstruct *structptr)
+GDSreadPath(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr)
 {
   unsigned char *record;
   int i, nbytes, layerno,datatype;
@@ -426,12 +426,19 @@ GDSreadPath(int gdsfildes, GDSstruct *structptr)
 
   }
   FREE(record);
+  double  userunit = libptr -> userunit;
 
-  fprintf(stdout, "Path on layer %d, datatype %d, of type %d with width = %d:\n",
-          layerno, layerptr->datatype,pathptr->pathtype, pathptr->width);
-  for(i = 0; i < pathptr->numpoints; i++)
-    fprintf(stdout, "point[%d] = %9d %9d\n",
-            i, (pathptr->points[i]).x, (pathptr->points[i]).y);
+  fprintf(stdout, " %04d Path on layer %d, datatype %d, of path type %d width = %9.3f:\n",
+          __LINE__,
+          layerno, layerptr -> datatype,
+	           pathptr -> pathtype,
+	           pathptr -> width * userunit );
+  for(i = 0; i < pathptr->numpoints; i++ )
+    fprintf(stdout, " %04d point[%4d] = %10.3f %10.3f\n",
+	    __LINE__,
+            i, ((pathptr -> points[i]).x ) * userunit,
+  	       ((pathptr -> points[i]).y ) * userunit);
+
   return newcell;
 }
 

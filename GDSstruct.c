@@ -137,7 +137,7 @@ GDSreadStruct(int gdsfildes, GDSlibrary *libptr)
         structptr->cells = newcell;
         break;
       case PATH:
-        if((newcell = GDSreadPath(gdsfildes, structptr)) == NULL)
+        if((newcell = GDSreadPath(gdsfildes, structptr, (GDSlibrary *) libptr)) == NULL)
           return NULL;
         newcell->next = structptr->cells;
         structptr->cells = newcell;
