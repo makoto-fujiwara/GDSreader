@@ -147,6 +147,16 @@ main(argc, argv)
       printUsage(argv[0]);
       exit(0);
     }
+    else if(!strcmp(argv[i], "-S") || !strcmp(argv[i], "--summary"))
+    {
+      printUsage(argv[0]);
+      exit(0);
+    }
+    else if(!strcmp(argv[i], "-u") || !strcmp(argv[i], "--userunit"))
+    {
+      printUsage(argv[0]);
+      exit(0);
+    }
     else
     {
       fprintf(stderr, "Unknown option \"%s\"\n", argv[i]);
