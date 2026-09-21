@@ -26,6 +26,7 @@
 #include <GDSglobals.h>
 #include <GDSaux.h>
 #include <GDStransf.h>
+#include <GDSglobal.h>
 
 /*
  * Both PostScript and HPGL interpreters are faster when dealing with rectangles
@@ -420,12 +421,17 @@ GDSreadBoundary(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr)
   double userunit = libptr -> userunit;
 //  fprintf(stderr, "%04d, %5.7f\n", __LINE__, userunit );
   fprintf(stdout, " %04d   %s Boundary on layer %d, datatype %d:\n", __LINE__, __func__, layerno,
-        layerptr->datatype);
+        layerptr -> datatype);
+  if (show_summary == 0 ) {
   for(i = 0; i < boundaryptr->numpoints; i++)
     fprintf(stdout, " %04d     GDSboudary: %s point[%03d/%03d] = %9.3f %9.3f\n",
 	    __LINE__, __func__, i, boundaryptr -> numpoints  ,
-	    (boundaryptr->points[i]).x * userunit,
-	    (boundaryptr->points[i]).y * userunit);
+	    (boundaryptr -> points[i]).x * userunit,
+	    (boundaryptr -> points[i]).y * userunit);
+  } else {
+    fprintf(stdout, " %04d   *****   show summary (-S) requested and won't show detail of boundary, count (%d).\n", __LINE__,
+	    boundaryptr -> numpoints);;
+  }
   return newcell;
-}
+} 
 
