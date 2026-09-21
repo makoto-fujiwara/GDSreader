@@ -265,7 +265,7 @@ GDSfreePath(GDScell *cell)
       }
     }
     if(cellptr == NULL)
-      fprintf(stderr, "Oops! GDSfreePath(): Missing cell in layerptr\n");
+      fprintf(stderr, " %04d %s %s Oops! GDSfreePath(): Missing cell in layerptr\n", __LINE__, __FILE__, __func__ );
   }
   FREE(cell->detail.path->points);
   FREE(cell->detail.path);
@@ -373,7 +373,7 @@ GDSreadPath(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr, int show_su
 
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != PATHTYPE)
   {
-    fprintf(stderr, "Missing PATHTYPE field in PATH element. Abort!\n");
+    fprintf(stderr, " %04d %s %s *** Missing PATHTYPE field in PATH element. Abort!\n", __LINE__, __FILE__, __func__);
 
   }
   pathptr->pathtype = GDSreadInt2(record + 2);
@@ -399,7 +399,7 @@ GDSreadPath(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr, int show_su
   }
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != WIDTH)
   {
-    fprintf(stderr, "Missing WIDTH field in PATH element. Abort!\n");
+    fprintf(stderr, " %04d %s %s *** Missing WIDTH field in PATH element. Abort!\n", __LINE__, __FILE__, __func__);
 
   }
   pathptr->width = GDSreadInt4(record + 2);
@@ -407,7 +407,7 @@ GDSreadPath(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr, int show_su
 
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != XY)
   {
-    fprintf(stderr, "Missing XY field in PATH element. Abort!\n");
+    fprintf(stderr, " %04d %s %s *** Missing XY field in PATH element. Abort!\n", __LINE__, __FILE__, __func__);
 
   }
   pathptr->numpoints = (nbytes - 2) / 8;
@@ -422,7 +422,7 @@ GDSreadPath(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr, int show_su
 
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != ENDEL)
   {
-    fprintf(stderr, "Missing ENDEL field in PATH element. Abort!\n");
+    fprintf(stderr, " %04d %s %s *** Missing ENDEL field in PATH element. Abort!\n", __LINE__,__FILE__, __func__);
 
   }
   FREE(record);

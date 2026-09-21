@@ -189,11 +189,11 @@ GDSreadStruct(int gdsfildes, GDSlibrary *libptr, int show_summary)
 
 	break;
       case ENDEL:
-        fprintf(stderr, "%04d ENDEL  %d\n",  __LINE__, type);
+        fprintf(stderr, " %04d %s %s ENDEL %d\n",  __LINE__, __FILE__, __func__, type);
 
 	break;
       default:
-        fprintf(stderr, "%04d Unknown record type %d\n", __LINE__, type);
+        fprintf(stderr, " %04d    %s %s *** Unknown record type %d\n", __LINE__, __FILE__, __func__, type);
         break;
     }
     FREE(record);

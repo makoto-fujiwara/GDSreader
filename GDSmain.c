@@ -81,7 +81,7 @@ main(argc, argv)
       i++;
       if(i == argc)
       {
-        fprintf(stderr, "Missing argument for the option -ifile. Exiting...\n");
+        fprintf(stderr, "%04d %s %s Missing argument for the option -ifile. Exiting...\n", __LINE__, __FILE__, __func__ );
         exit(1);
       }
       ifile = open(argv[i], O_RDONLY);
