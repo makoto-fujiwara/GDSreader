@@ -72,7 +72,7 @@ main(argc, argv)
   char *configfile = NULL, *psfile = NULL, *povfile = NULL, *hpglfile = NULL, *structname = NULL;
   
   int show_summary = 0;
-  int use_userunit = 0;
+  double use_userunit = 0;
 
   for(i = 1; i < argc; i++)
   {
