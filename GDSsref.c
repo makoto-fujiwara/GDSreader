@@ -348,16 +348,17 @@ GDSreadSref(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr )
   }
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != ENDEL)
   {
-    fprintf(stderr, "Missing ENDEL field in SREF element. Skipping!\n");
+    fprintf(stderr, " %04d Missing ENDEL field in SREF element. Skipping!\n", __LINE__ );
     // exit(1);
   }
   FREE(record);
 
     srefptr->transfptr = GDSgetTransf(ref, angle, mag, mirror);
 
-  fprintf(stdout, " %04d %s Sref at %9d,%9d, angle = %.2e, mag = %.2e, mirror = %d of cell named \"%s\"\n",
+  fprintf(stdout, " %04d %s Sref at %10.4f, %10.4f, angle = %.2e, mag = %.2e, mirror = %d of cell named \"%s\"\n",
 	  __LINE__, __func__,
-          ref.x, ref.y, angle, mag, mirror, srefptr->refname);
+          ref.x * libptr -> userunit, ref.y * libptr-> userunit,
+	  angle, mag, mirror, srefptr->refname);
   return newcell;
 }
 

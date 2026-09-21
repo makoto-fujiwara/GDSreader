@@ -323,7 +323,7 @@ GDSreadAref(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr )
   // fprintf (stderr, "%04d  ***** userunit:  %5.5f ***** \n", __LINE__, libptr -> userunit);
   double userunit = libptr -> userunit;
   if (userunit == 0) { userunit = 1;}
-  fprintf(stdout, " %04d %s Aref at %7.3f,%11.3f  of cell named \"%-20s\", c/r = %4d/%4d,  spacing = %5.3f /%10.3f, \tmirror = %d, (userunit = %9.5f)\n", 
+  fprintf(stdout, " %04d %s Aref at %10.3f,%11.3f  of cell named \"%-20s\", c/r = %4d/%4d,  spacing = %5.3f /%10.3f, \tmirror = %d, (userunit = %9.5f)\n", 
 	  __LINE__, __func__,
           ref.x * userunit,
 	  ref.y * userunit,
