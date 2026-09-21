@@ -26,6 +26,7 @@
 #include <GDSaux.h>
 #include <GDStransf.h>
 #include <GDSboundary.h>
+#include <GDSglobal.h>
 
 static double
 getAngle(coord x1, coord y1, coord x2, coord y2)
@@ -321,7 +322,7 @@ GDStransfPath(pathEl *path, transform *transf)
 }
 
 GDScell *
-GDSreadPath(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr, int show_summary)
+GDSreadPath(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr)
 {
   unsigned char *record;
   int i, nbytes, layerno,datatype;
@@ -400,7 +401,6 @@ GDSreadPath(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr, int show_su
   if(GDSreadRecord(gdsfildes, &record, &nbytes) != WIDTH)
   {
     fprintf(stderr, " %04d %s %s *** Missing WIDTH field in PATH element. Abort!\n", __LINE__, __FILE__, __func__);
-
   }
   pathptr->width = GDSreadInt4(record + 2);
   FREE(record);
@@ -433,7 +433,7 @@ GDSreadPath(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr, int show_su
           layerno, layerptr -> datatype,
 	           pathptr -> pathtype,
 	           pathptr -> width * userunit );
-  if (show_summary == 1 ) {
+  if (show_summary == 0 ) {
   for (i = 0; i < pathptr->numpoints; i++ )
     fprintf(stdout, " %04d point[%4d] = %10.3f %10.3f\n",
 	    __LINE__,

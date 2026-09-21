@@ -19,7 +19,7 @@
 #ifndef _GDSlibrary_h_
 #define _GDSlibrary_h_
 
-extern GDSlibrary* GDSreadLib(int gdsfildes, int show_summary);
+extern GDSlibrary* GDSreadLib(int gdsfildes);
 extern GDSstruct *GDSgetStructByName(GDSlibrary *library, char *structname);
-extern double  use_userunit;
+
 #endif /* _GDSlibrary_h_ */

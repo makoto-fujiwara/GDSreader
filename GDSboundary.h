@@ -27,7 +27,7 @@ extern void BoundaryToHPGL(FILE *hpglfile, boundaryEl *boundary,
 extern void GDSfreeBoundary(GDScell *cell);
 extern GDScell *GDSdupBoundary(boundaryEl *boundary);
 extern void GDStransfBoundary(boundaryEl *boundary, transform *transf); 
-extern GDScell *GDSreadBoundary(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr, int show_summary);
+extern GDScell *GDSreadBoundary(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr);
 
 #endif /* _GDSboundary_h_ */
 

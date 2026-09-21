@@ -344,7 +344,7 @@ GDStransfBoundary(boundaryEl *boundary, transform *transf)
 }
 
 GDScell *
-GDSreadBoundary(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr, int show_summary)
+GDSreadBoundary(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr)
 {
   unsigned char *record;
   int i, nbytes, layerno, datatype;

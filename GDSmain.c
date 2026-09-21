@@ -25,12 +25,15 @@
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
+
 #include <GDSstructs.h>
 #include <GDSconsts.h>
 #include <GDSreader.h>
 #include <GDStoHPGL.h>
 #include <GDStoPS.h>
 #include <GDStoPOV.h>
+/* #include <GDSglobal.h> */
+
 #include "GDSversion.h"
 
 static void
@@ -60,19 +63,19 @@ printUsage(char *progname)
   fprintf(stderr, "-S, --summary:           Show summary (not implemented yet)\n");
 }
 
+  int show_summary = 0;
 
 int
 main(argc, argv)
   int argc;
   char **argv;
-
 {
   GDSlibrary *libptr;
   int i, ifile = -1;
   char *configfile = NULL, *psfile = NULL, *povfile = NULL, *hpglfile = NULL, *structname = NULL;
   
-  int show_summary = 0;
-  double use_userunit = 0;
+  int use_userunit = 0;
+
 
   for(i = 1; i < argc; i++)
   {
@@ -156,7 +159,7 @@ main(argc, argv)
     {
       show_summary = 1;
     }
-    else if(!strcmp(argv[i], "-u") || !strcmp(argv[i], "--userunit"))
+    else if(!strcmp(argv[i], "-u") || !strcmp(argv[i], "--user_unit"))
     {
       use_userunit = 1;
     }
@@ -171,7 +174,7 @@ main(argc, argv)
   if(ifile == -1)
     ifile = 0;
   
-  libptr = GDSreadLib(ifile, show_summary);
+  libptr = GDSreadLib(ifile);
   if(libptr == NULL)
   {
     fprintf(stderr, "Couldn't read the Calma library. Exiting...\n");

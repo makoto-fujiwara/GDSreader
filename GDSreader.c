@@ -102,7 +102,7 @@ GDSreadUpToFirstStruct(int gdsfildes, GDSlibrary *libptr)
 }
 
 GDSlibrary *
-GDSreadLib(int gdsfildes, int show_summary)
+GDSreadLib(int gdsfildes)
 {
   FILE *outfile;
   GDSlibrary *libptr;
@@ -177,7 +177,7 @@ GDSreadLib(int gdsfildes, int show_summary)
           if(!strcmp(structptr1 -> name, cellptr -> detail.sref -> refname))
           {
             cellptr -> detail.sref -> strptr = structptr1;
-            fprintf(stdout, " %04d %s Fixed reference for SREF \"%s\"\n", __LINE__, __func__,
+            fprintf (stdout, " %04d %s Fixed reference for SREF \"%s\"\n", __LINE__, __func__,
                     cellptr -> detail.sref -> refname);
             break;
           }
