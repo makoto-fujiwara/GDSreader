@@ -128,7 +128,8 @@ GDSreadStruct(int gdsfildes, GDSlibrary *libptr)
           fprintf(stderr, "Bad STRNAME record. Aborting\n");
           exit(1);
         }
-        fprintf(stdout, " %04d %s strname = %s\n", __LINE__, __func__, structptr->name);
+        fprintf(stdout, " -----------------\n");
+        fprintf(stdout, " %04d >>> %s strname = %s\n", __LINE__, __func__, structptr->name);
         break;
       case BOUNDARY:
         if((newcell = GDSreadBoundary(gdsfildes, structptr, libptr) )== NULL)
