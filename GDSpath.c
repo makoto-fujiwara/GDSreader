@@ -441,7 +441,7 @@ GDSreadPath(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr)
   	       ((pathptr -> points[i]).y ) * userunit);
     }
   else {
-    fprintf(stdout, " %04d   *****   show summary requested and won't show detail of path, count (%d).\n", __LINE__,
+    fprintf(stdout, " %04d   *****   show summary (-S) requested and won't show detail of path, count (%d).\n", __LINE__,
 	    pathptr -> numpoints);;
   }
   return newcell;
