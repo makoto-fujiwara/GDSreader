@@ -5,9 +5,7 @@ BINDIR=$(INSTROOT)/bin
 DOCDIR=$(INSTROOT)/doc/gdsreader-0.3.2
 MANDIR=$(INSTROOT)/man/man1
 
-#CFLAGS = -I. 
 CFLAGS = -I. -Wall -g #-pg
-LDFLAGS = #-pg
 
 OBJS = GDSreader.o GDSmain.o GDSaux.o GDSboundary.o GDSpath.o \
        GDSsref.o GDSaref.o GDStext.o GDSnode.o GDSbox.o GDStoHPGL.o \
