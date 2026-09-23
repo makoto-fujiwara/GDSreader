@@ -326,7 +326,6 @@ GDSdupBoundary(boundaryEl *boundary)
     (boundaryptr -> points[i]).x = (boundary -> points[i]).x;
     (boundaryptr -> points[i]).y = (boundary -> points[i]).y;
   }
-  
   return newcell;
 }
 
@@ -419,17 +418,18 @@ GDSreadBoundary(int gdsfildes, GDSstruct *structptr, GDSlibrary *libptr)
   FREE(record);
 
   double userunit = libptr -> userunit;
-//  fprintf(stderr, "%04d, %5.7f\n", __LINE__, userunit );
-  fprintf(stdout, " %04d   %s Boundary on layer %d, datatype %d:\n", __LINE__, __func__, layerno,
+
+  fprintf(stdout, " %04d   %s Boundary on layer %d, datatype %d:", __LINE__, __func__, layerno,
         layerptr -> datatype);
   if (show_summary == 0 ) {
+    fprintf(stdout, "\n");
   for(i = 0; i < boundaryptr -> numpoints; i++)
     fprintf(stdout, " %04d     GDSboudary: %s point[%03d/%03d] = %9.3f %9.3f\n",
 	    __LINE__, __func__, i, boundaryptr -> numpoints  ,
 	    (boundaryptr -> points[i]).x * userunit,
 	    (boundaryptr -> points[i]).y * userunit);
   } else {
-    fprintf(stdout, " %04d   *****   show summary (-S) requested and won't show detail of boundary, count (%d).\n", __LINE__,
+    fprintf(stdout, "apex count (%d).\n",
 	    boundaryptr ->  numpoints);;
   }
   return newcell;
