@@ -5,7 +5,7 @@ BINDIR=$(INSTROOT)/bin
 DOCDIR=$(INSTROOT)/doc/gdsreader-0.3.2
 MANDIR=$(INSTROOT)/man/man1
 
-CFLAGS = -I. -Wall -g #-pg
+CFLAGS+= -I. -Wall -g #-pg
 
 OBJS = GDSreader.o GDSmain.o GDSaux.o GDSboundary.o GDSpath.o \
        GDSsref.o GDSaref.o GDStext.o GDSnode.o GDSbox.o GDStoHPGL.o \
@@ -26,7 +26,7 @@ install: gdsreader maptolayer
 	mkdir -p $(MANDIR) && cp -f maptolayer.1 gdsreader.1 $(MANDIR)
 
 maptolayer: maptolayer.c
-	$(CC) -o maptolayer maptolayer.c
+	$(CC) ${LDFLAGS} -o maptolayer maptolayer.c
 
 clean:
 	rm -f *.o *.bak core out result.xg result.txt result.ps gdsreader \
